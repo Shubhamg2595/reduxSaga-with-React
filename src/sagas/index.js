@@ -1,4 +1,4 @@
-import { takeEvery } from 'redux-saga/effects'
+import { take, call } from 'redux-saga/effects'
 
 import { IMAGES } from '../constants'
 
@@ -7,9 +7,16 @@ function* handleImagesLoad() {
     console.log("loading images....")
 }
 
+function* handleDang() {
+    console.log('DANG!!')
+}
+
 // watchersaga
 function* rootSaga() {
-    yield takeEvery(IMAGES.LOAD, handleImagesLoad)
+    yield take(IMAGES.LOAD)
+    yield call(handleImagesLoad)
+    yield take('DANG')
+    yield call(handleDang)
 
 }
 

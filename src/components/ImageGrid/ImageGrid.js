@@ -36,8 +36,9 @@ class ImageGrid extends Component {
                         />
                     ))}
 
-                    <a onClick={this.props.loadImages}>Load Images</a>
+
                 </section>
+                <a onClick={this.props.loadImages}>Load Images</a>
             </div>
         );
     }
