@@ -13,10 +13,11 @@ function* handleDang() {
 
 // watchersaga
 function* rootSaga() {
-    yield take(IMAGES.LOAD)
-    yield call(handleImagesLoad)
     yield take('DANG')
     yield call(handleDang)
+    yield take(IMAGES.LOAD)
+    yield call(handleImagesLoad)
+
 
 }
 
