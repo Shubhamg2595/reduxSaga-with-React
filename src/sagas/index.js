@@ -1,15 +1,25 @@
 import { take, put, call } from 'redux-saga/effects'
 
+// workersaga
 function* workerSaga() {
     console.log('Hey from worker')
     console.log(put({ type: 'ACTION_FROM_WORKER' }))
     yield put({ type: 'ACTION_FROM_WORKER' })
 }
 
+// byebyesaga
+function* byebyeSaga() {
+    console.log('bye bye')
+}
+
 // watchersaga
 function* rootSaga() {
     yield take("LOGIN") //wont work unless we dispatch the 'HELLO' action
     yield call(workerSaga)
+    // yield take('ADD_TO_CART)
+    // yield take('BUY)
+    yield take('LOGOUT')
+    yield call(byebyeSaga)
 }
 
 export default rootSaga;
@@ -50,5 +60,8 @@ to call watchersaga
 
 redux saga pauses itself whenver they counter a promise,
 until the promise completes itself.
+
+4.Saga follows the flow ,as it is defined , it cannot be hacked by
+dispatching one action before the another
 
 */
