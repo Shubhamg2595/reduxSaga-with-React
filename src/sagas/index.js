@@ -1,29 +1,6 @@
-import { take, call } from 'redux-saga/effects'
+import imagesSaga from './imagesSaga'
 
-import { IMAGES } from '../constants'
-
-// workersaga
-function* handleImagesLoad() {
-    console.log("loading images....")
-}
-
-function* handleDang() {
-    console.log('DANG!!')
-}
-
-// watchersaga
-function* rootSaga() {
-    yield take('DANG')
-    yield call(handleDang)
-    yield take(IMAGES.LOAD)
-    yield call(handleImagesLoad)
-
-
-}
-
-export default rootSaga;
-
-
+export default imagesSaga
 /*
  1.
  watcher_saga -> listesns to an action -> invokes the worker saga
