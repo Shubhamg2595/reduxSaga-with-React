@@ -1,5 +1,12 @@
+import { takeEvery } from 'redux-saga/effects'
+
+function* workerSaga() {
+    console.log('Hey from worker')
+}
+
+// watchersaga
 function* rootSaga() {
-    console.log('hello world')
+    yield takeEvery("HELLO", workerSaga) //wont work unless we dispatch the 'HELLO' action
 }
 
 export default rootSaga;
@@ -20,6 +27,11 @@ by themseleves these objects are doing nothing,they are
 simply returning a object and then this obejct
 is passed back to the middleware,it then accordingly acts
 upon them.
+
+2.a) takeEvery
+it listens to a particular action,whenever that action is dispatched and
+then watcher saga comes into play
+
 
 3. how redux saga manages promises?
 
