@@ -38,11 +38,11 @@ class ImageGrid extends Component {
     }
 }
 
-const mapStateToProps = ({ isLoading, images, error }) => {
+const mapStateToProps = ({ isLoading, images, error }) => ({
     isLoading,
-        images,
-        error
-}
+    images,
+    error
+})
 
 
-export default connect(mapStateToProps)(ImageGrid);
+export default connect(mapStateToProps, null)(ImageGrid);
