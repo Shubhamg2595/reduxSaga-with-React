@@ -1,7 +1,8 @@
-import { takeEvery } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 function* workerSaga() {
     console.log('Hey from worker')
+    yield put({ type: 'ACTION_FROM_WORKER' })
 }
 
 // watchersaga
@@ -32,6 +33,8 @@ upon them.
 it listens to a particular action,whenever that action is dispatched and
 then watcher saga comes into play
 
+2.b) put
+used to dispatch some action from worker saga
 
 3. how redux saga manages promises?
 
