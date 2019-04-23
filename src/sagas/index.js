@@ -1,13 +1,15 @@
-import { takeEvery, put } from 'redux-saga/effects'
+import { take, put, call } from 'redux-saga/effects'
 
 function* workerSaga() {
     console.log('Hey from worker')
+    console.log(put({ type: 'ACTION_FROM_WORKER' }))
     yield put({ type: 'ACTION_FROM_WORKER' })
 }
 
 // watchersaga
 function* rootSaga() {
-    yield takeEvery("HELLO", workerSaga) //wont work unless we dispatch the 'HELLO' action
+    yield take("LOGIN") //wont work unless we dispatch the 'HELLO' action
+    yield call(workerSaga)
 }
 
 export default rootSaga;
@@ -35,6 +37,14 @@ then watcher saga comes into play
 
 2.b) put
 used to dispatch some action from worker saga
+
+2.c) take
+@ useCase : need to handle Login action only once,even if it is dispatched
+multiple times
+@only take single parameter
+
+2.d) call
+to call watchersaga
 
 3. how redux saga manages promises?
 
